@@ -91,8 +91,9 @@ export default class KMSTypeComponent extends Component<any, State> {
         <FormControl isValid={this.state.email.isValid} theme="Email" inputData={this.state.email.value} onChange={this.setEmail} />
         <FormControl isValid={this.state.password.isValid} theme="Password" inputData={this.state.password.value} onChange={this.setPassword} />
         <FormControl isValid={this.state.confirmPassword.isValid} theme="ConfirmPassword" inputData={this.state.confirmPassword.value} onChange={this.setConfirmPassword} />
-        <hr />
-        <button disabled={!finalCheck}>{finalCheck ? '제출 가능!' : '제출 불가!'}</button>
+
+        <button disabled={!finalCheck}
+          onClick={(e) => { e.preventDefault() }}>{finalCheck ? '제출 가능!' : '제출 불가!'}</button>
       </form>
     )
 

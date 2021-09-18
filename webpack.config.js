@@ -5,7 +5,7 @@ module.exports = {
   mode: "development", // 나중에 배포용으로는 production
   devtool: "eval", // 빠르게 build 하겠다.
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"], // entry에 자동으로 적용할 확장자.
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css"], // entry에 자동으로 적용할 확장자.
   },
 
   entry: {
@@ -32,11 +32,15 @@ module.exports = {
           ],
         },
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   }, // entry에 파일을 읽고 거기에 모듈을 적용한 후 -> webpack을 적용한다.
 
   output: {
-    // 최종 출력할 번들링된 js
+    // 최종 출력할 번들링된 js / 절대경로
     path: path.join(__dirname, "dist"), // C:/user/kms/...dist/app.js
     filename: "app.js",
   },

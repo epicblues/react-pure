@@ -1,0 +1,21 @@
+button:disabled {
+  background-color: brown;
+}
+
+button:enabled {
+  background-color: aqua;
+}
+
+.form-control {
+  border: 2px black dotted;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: bisque;
+  align-items: center;
+
+  /* width: 100vh; */
+}
