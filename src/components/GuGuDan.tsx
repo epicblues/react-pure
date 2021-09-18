@@ -1,6 +1,8 @@
 import React from "react";
 import { Component, Fragment } from "react";
 
+
+
 class GuGuDan extends Component {
   // constructor(props) {
   //   super(props);
@@ -19,7 +21,9 @@ class GuGuDan extends Component {
     submit: "",
   };
 
-  submitAnswer = (e) => {
+  input: HTMLInputElement;
+
+  submitAnswer = (e: React.BaseSyntheticEvent) => {
     if (
       parseInt(this.state.submit) ===
       this.state.firstNum * this.state.secondNum
@@ -33,6 +37,8 @@ class GuGuDan extends Component {
     } else {
       this.setState({ answer: "오답 ! 다시 입력해주세요!", submit: "" });
     }
+
+    this.input.focus();
   };
 
   render() {
@@ -49,8 +55,15 @@ class GuGuDan extends Component {
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              this.submitAnswer();
+              this.submitAnswer(e);
             }
+          }}
+          ref={(ref: HTMLInputElement) => { this.input = ref; }}
+          onFocus={(e) => {
+            e.target.style.background = "gray";
+          }}
+          onBlur={(e) => {
+            e.target.style.background = "white";
           }}
         />
         <button onClick={this.submitAnswer}>제출</button>

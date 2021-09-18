@@ -5,11 +5,11 @@ module.exports = {
   mode: "development", // 나중에 배포용으로는 production
   devtool: "eval", // 빠르게 build 하겠다.
   resolve: {
-    extensions: [".js", ".jsx"], // entry에 자동으로 적용할 확장자.
+    extensions: [".js", ".jsx", ".ts", ".tsx"], // entry에 자동으로 적용할 확장자.
   },
 
   entry: {
-    app: ["./src/index"], // 상대 경로 사용 가능?
+    app: ["./src/index"], // src 폴더에 js 또는 jsx 확장자를 가진 index 파일을 entry로 삼겠다!
   }, // 입력
 
   module: {
@@ -21,11 +21,23 @@ module.exports = {
           presets: ["@babel/preset-env", "@babel/preset-react"],
         }, // 그 모듈에서 추가적으로 사용할 다른 옵션(프로그램)
       },
+      {
+        test: /\.tsx?$/,
+        loader: "babel-loader",
+        options: {
+          presets: [
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@babel/preset-typescript",
+          ],
+        },
+      },
     ],
   }, // entry에 파일을 읽고 거기에 모듈을 적용한 후 -> webpack을 적용한다.
 
   output: {
+    // 최종 출력할 번들링된 js
     path: path.join(__dirname, "dist"), // C:/user/kms/...dist/app.js
     filename: "app.js",
-  }, // 출력
+  },
 };
