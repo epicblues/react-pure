@@ -20,7 +20,7 @@ const FormControl: FunctionComponent<Props> = ({ inputData, onChange, theme, isV
   return (
     <div className="form-control" style={controlStyle}>
       <label htmlFor="" style={{ display: "block" }}>{theme}</label>
-      <input type={isPassword() ? "password" : "text"} value={inputData} placeholder={'Enter ' + theme} onChange={onChange} name={theme} style={{ border: "3px solid " + (isValid ? "green" : "red") }} />
+      <input type={isPassword() ? "password" : "text"} value={inputData} placeholder={'Please Submit Your ' + theme} onChange={onChange} name={theme} style={{ border: "3px solid " + (isValid ? "green" : "red") }} />
     </div>
   )
 }

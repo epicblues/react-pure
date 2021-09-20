@@ -4,3 +4,7 @@ import TypeScript from "./components/TypeScript";
 import css from "./style/index";
 
 ReactDOM.render(<TypeScript />, document.querySelector("#root"));
+
+if (module.hot) {
+  module.hot.accept();
+}
